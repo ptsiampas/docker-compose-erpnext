@@ -1,0 +1,17 @@
+{
+  "admin_password": "frappe",
+  "db_host": "db",
+  "db_name": "frappe",
+  "db_password": "frappe",
+  "db_user": "frappe",
+  "deny_multiple_logins": false,
+  "disable_website_cache": false,
+  "dns_multitenant": false,
+  "host_name": "localhost",
+  "logging": "1",
+  "redis_cache": "redis://redis-cache",
+  "redis_queue": "redis://redis-queue",
+  "redis_socketio": "redis://redis-socketio",
+  "root_password": "root",
+  "serve_default_site": true
+}

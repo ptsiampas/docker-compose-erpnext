@@ -13,28 +13,30 @@ services:
       - '80:80'
 
   app:
-    image: donysukardi/erpnext:stable
+    image: bizzotech/erpnext:latest
     container_name: erpnext-app
+    volumes:
+      - './sites:/home/frappe/frappe-bench/sites'
     depends_on:
       - db
 
   scheduler:
-    image: donysukardi/erpnext:stable
+    image: bizzotech/erpnext:latest
     container_name: erpnext-scheduler
     command: scheduler
 
   worker-default:
-    image: donysukardi/erpnext:stable
+    image: bizzotech/erpnext:latest
     container_name: erpnext-worker-default
     command: worker-default
 
   worker-long:
-    image: donysukardi/erpnext:stable
+    image: bizzotech/erpnext:latest
     container_name: erpnext-worker-long
     command: worker-long
 
   worker-short:
-    image: donysukardi/erpnext:stable
+    image: bizzotech/erpnext:latest
     container_name: erpnext-worker-short
     command: worker-short
 
@@ -51,7 +53,7 @@ services:
     container_name: erpnext-redis-socketio
 
   node-socketio:
-    image: donysukardi/erpnext:stable
+    image: bizzotech/erpnext:latest
     container_name: erpnext-node-socketio
     command: node-socketio
 
@@ -60,6 +62,7 @@ services:
     container_name: erpnext-db
     volumes:
       - './config/my.cnf:/etc/mysql/conf.d/frappe.cnf'
+      - './dataVolume:/var/lib/mysql'
     environment:
       - MYSQL_ROOT_PASSWORD=asdfasdfasdf
       - MYSQL_USER=frappe
