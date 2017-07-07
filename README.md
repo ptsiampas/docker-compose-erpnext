@@ -18,8 +18,8 @@ You should be able to log in to the server at `http://localhost`. The username i
 
 ## Update ERPNext
 
-1. run `docker pull bizzotech/erpnext:latest`
-2. run: `docker-compose down`
-3. run: `docker-compose -f update.yml run update`
+1. Start & remove the containers: `docker-compose down`
+2. Change ERPNEXT_VERSION in .env file
+3. Update database (run patches & migrations): `docker-compose -f update.yml run update`
 4. Start the containers: `docker-compose up -d`
 5. Watch the container logs: `docker-compose logs -f`

@@ -3,7 +3,7 @@ version: '2'
 services:
 
   update:
-    image: bizzotech/erpnext:latest
+    image: bizzotech/erpnext:${ERPNEXT_VERSION}
     container_name: erpnext-update
     volumes:
       - './sites:/home/frappe/frappe-bench/sites'
