@@ -14,3 +14,12 @@ Follow the steps below to run your own local installation of ERPNext.
 5. Watch the container logs: `docker-compose logs -f`
 
 You should be able to log in to the server at `http://localhost`. The username is `Administrator` and the password is `frappe`. Follow the prompts to complete the initial setup.
+
+
+## Update ERPNext
+
+1. run `docker pull bizzotech/erpnext:latest`
+2. run: `docker-compose down`
+3. run: `docker-compose -f update.yml run update`
+4. Start the containers: `docker-compose up -d`
+5. Watch the container logs: `docker-compose logs -f`

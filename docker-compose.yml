@@ -23,21 +23,29 @@ services:
   scheduler:
     image: bizzotech/erpnext:latest
     container_name: erpnext-scheduler
+    volumes:
+      - './sites:/home/frappe/frappe-bench/sites'
     command: scheduler
 
   worker-default:
     image: bizzotech/erpnext:latest
     container_name: erpnext-worker-default
+    volumes:
+      - './sites:/home/frappe/frappe-bench/sites'
     command: worker-default
 
   worker-long:
     image: bizzotech/erpnext:latest
     container_name: erpnext-worker-long
+    volumes:
+      - './sites:/home/frappe/frappe-bench/sites'
     command: worker-long
 
   worker-short:
     image: bizzotech/erpnext:latest
     container_name: erpnext-worker-short
+    volumes:
+      - './sites:/home/frappe/frappe-bench/sites'
     command: worker-short
 
   redis-cache:
@@ -55,6 +63,8 @@ services:
   node-socketio:
     image: bizzotech/erpnext:latest
     container_name: erpnext-node-socketio
+    volumes:
+      - './sites:/home/frappe/frappe-bench/sites'
     command: node-socketio
 
   db:
