@@ -12,6 +12,6 @@
   "redis_cache": "redis://redis-cache",
   "redis_queue": "redis://redis-queue",
   "redis_socketio": "redis://redis-socketio",
-  "root_password": "root",
+  "root_password": "asdfasdfasdf",
   "serve_default_site": true
 }

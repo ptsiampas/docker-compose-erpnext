@@ -54,7 +54,7 @@ services:
       - './config/my.cnf:/etc/mysql/conf.d/frappe.cnf'
       - './dataVolume:/var/lib/mysql'
     environment:
-      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_ROOT_PASSWORD=asdfasdfasdf
       - MYSQL_USER=frappe
       - MYSQL_PASSWORD=frappe
       - MYSQL_DATABASE=frappe
