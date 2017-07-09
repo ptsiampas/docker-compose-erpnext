@@ -1,0 +1,60 @@
+version: '2'
+
+services:
+
+  setup:
+    image: bizzotech/erpnext:${ERPNEXT_VERSION}
+    container_name: erpnext-setup
+    volumes:
+      - './sites:/home/frappe/frappe-bench/sites'
+    depends_on:
+      - db
+    command: setup
+
+  update:
+    image: bizzotech/erpnext:${ERPNEXT_VERSION}
+    container_name: erpnext-update
+    volumes:
+      - './sites:/home/frappe/frappe-bench/sites'
+    depends_on:
+      - db
+    command: update
+
+  backup:
+    image: bizzotech/erpnext:${ERPNEXT_VERSION}
+    container_name: erpnext-backup
+    volumes:
+      - './sites:/home/frappe/frappe-bench/sites'
+    depends_on:
+      - db
+    command: backup
+
+  restore:
+    image: bizzotech/erpnext:${ERPNEXT_VERSION}
+    container_name: erpnext-restore
+    volumes:
+      - './sites:/home/frappe/frappe-bench/sites'
+    depends_on:
+      - db
+    command: restore
+
+  migrate:
+    image: bizzotech/erpnext:${ERPNEXT_VERSION}
+    container_name: erpnext-migrate
+    volumes:
+      - './sites:/home/frappe/frappe-bench/sites'
+    depends_on:
+      - db
+    command: migrate
+
+  db:
+    image: mariadb:latest
+    container_name: erpnext-db
+    volumes:
+      - './config/my.cnf:/etc/mysql/conf.d/frappe.cnf'
+      - './dataVolume:/var/lib/mysql'
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_USER=frappe
+      - MYSQL_PASSWORD=frappe
+      - MYSQL_DATABASE=frappe
