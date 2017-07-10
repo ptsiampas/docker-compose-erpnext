@@ -17,6 +17,7 @@ services:
     container_name: erpnext-app
     volumes:
       - './sites:/home/frappe/frappe-bench/sites'
+      - './apps/${CUSTOM_APP_NAME}:/home/frappe/frappe-bench/apps/${CUSTOM_APP_NAME}'
     depends_on:
       - db
 
@@ -25,6 +26,7 @@ services:
     container_name: erpnext-scheduler
     volumes:
       - './sites:/home/frappe/frappe-bench/sites'
+      - './apps/${CUSTOM_APP_NAME}:/home/frappe/frappe-bench/apps/${CUSTOM_APP_NAME}'
     command: scheduler
 
   worker-default:
@@ -32,6 +34,7 @@ services:
     container_name: erpnext-worker-default
     volumes:
       - './sites:/home/frappe/frappe-bench/sites'
+      - './apps/${CUSTOM_APP_NAME}:/home/frappe/frappe-bench/apps/${CUSTOM_APP_NAME}'
     command: worker-default
 
   worker-long:
@@ -39,6 +42,7 @@ services:
     container_name: erpnext-worker-long
     volumes:
       - './sites:/home/frappe/frappe-bench/sites'
+      - './apps/${CUSTOM_APP_NAME}:/home/frappe/frappe-bench/apps/${CUSTOM_APP_NAME}'
     command: worker-long
 
   worker-short:
@@ -46,6 +50,7 @@ services:
     container_name: erpnext-worker-short
     volumes:
       - './sites:/home/frappe/frappe-bench/sites'
+      - './apps/${CUSTOM_APP_NAME}:/home/frappe/frappe-bench/apps/${CUSTOM_APP_NAME}'
     command: worker-short
 
   redis-cache:
@@ -65,6 +70,7 @@ services:
     container_name: erpnext-node-socketio
     volumes:
       - './sites:/home/frappe/frappe-bench/sites'
+      - './apps/${CUSTOM_APP_NAME}:/home/frappe/frappe-bench/apps/${CUSTOM_APP_NAME}'
     command: node-socketio
 
   db:

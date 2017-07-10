@@ -7,15 +7,28 @@ services:
     container_name: erpnext-setup
     volumes:
       - './sites:/home/frappe/frappe-bench/sites'
+      - './apps/${CUSTOM_APP_NAME}:/home/frappe/frappe-bench/apps/${CUSTOM_APP_NAME}'
     depends_on:
       - db
     command: setup
+
+  setup-apps:
+    image: bizzotech/erpnext:${ERPNEXT_VERSION}
+    container_name: erpnext-setup-apps
+    volumes:
+      - './sites:/home/frappe/frappe-bench/sites'
+      - './apps/${CUSTOM_APP_NAME}:/home/frappe/frappe-bench/apps/${CUSTOM_APP_NAME}'
+    depends_on:
+      - db
+    command: setup-apps
+
 
   update:
     image: bizzotech/erpnext:${ERPNEXT_VERSION}
     container_name: erpnext-update
     volumes:
       - './sites:/home/frappe/frappe-bench/sites'
+      - './apps/${CUSTOM_APP_NAME}:/home/frappe/frappe-bench/apps/${CUSTOM_APP_NAME}'
     depends_on:
       - db
     command: update
@@ -25,6 +38,7 @@ services:
     container_name: erpnext-backup
     volumes:
       - './sites:/home/frappe/frappe-bench/sites'
+      - './apps/${CUSTOM_APP_NAME}:/home/frappe/frappe-bench/apps/${CUSTOM_APP_NAME}'
     depends_on:
       - db
     command: backup
@@ -34,6 +48,7 @@ services:
     container_name: erpnext-restore
     volumes:
       - './sites:/home/frappe/frappe-bench/sites'
+      - './apps/${CUSTOM_APP_NAME}:/home/frappe/frappe-bench/apps/${CUSTOM_APP_NAME}'
     depends_on:
       - db
     command: restore
@@ -43,6 +58,7 @@ services:
     container_name: erpnext-migrate
     volumes:
       - './sites:/home/frappe/frappe-bench/sites'
+      - './apps/${CUSTOM_APP_NAME}:/home/frappe/frappe-bench/apps/${CUSTOM_APP_NAME}'
     depends_on:
       - db
     command: migrate
