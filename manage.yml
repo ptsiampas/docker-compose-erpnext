@@ -4,7 +4,7 @@ services:
 
   setup:
     image: bizzotech/erpnext:${ERPNEXT_VERSION}
-    container_name: erpnext-setup
+    container_name: ${CONTAINER_NAME_PREFIX}-setup
     volumes:
       - './sites:/home/frappe/frappe-bench/sites'
     depends_on:
@@ -13,7 +13,7 @@ services:
 
   update:
     image: bizzotech/erpnext:${ERPNEXT_VERSION}
-    container_name: erpnext-update
+    container_name: ${CONTAINER_NAME_PREFIX}-update
     volumes:
       - './sites:/home/frappe/frappe-bench/sites'
     depends_on:
@@ -22,7 +22,7 @@ services:
 
   backup:
     image: bizzotech/erpnext:${ERPNEXT_VERSION}
-    container_name: erpnext-backup
+    container_name: ${CONTAINER_NAME_PREFIX}-backup
     volumes:
       - './sites:/home/frappe/frappe-bench/sites'
     depends_on:
@@ -31,7 +31,7 @@ services:
 
   restore:
     image: bizzotech/erpnext:${ERPNEXT_VERSION}
-    container_name: erpnext-restore
+    container_name: ${CONTAINER_NAME_PREFIX}-restore
     volumes:
       - './sites:/home/frappe/frappe-bench/sites'
     depends_on:
@@ -40,7 +40,7 @@ services:
 
   migrate:
     image: bizzotech/erpnext:${ERPNEXT_VERSION}
-    container_name: erpnext-migrate
+    container_name: ${CONTAINER_NAME_PREFIX}-migrate
     volumes:
       - './sites:/home/frappe/frappe-bench/sites'
     depends_on:
@@ -49,7 +49,7 @@ services:
 
   db:
     image: mariadb:latest
-    container_name: erpnext-db
+    container_name: ${CONTAINER_NAME_PREFIX}-db
     volumes:
       - './config/my.cnf:/etc/mysql/conf.d/frappe.cnf'
       - './dataVolume:/var/lib/mysql'

@@ -4,17 +4,17 @@ services:
 
   web:
     image: nginx:alpine
-    container_name: erpnext-web
+    container_name: ${CONTAINER_NAME_PREFIX}-web
     volumes:
       - './config/nginx.conf:/etc/nginx/conf.d/default.conf:ro'
     volumes_from:
       - app
     ports:
-      - '80:80'
+      - '${PORT}:80'
 
   app:
     image: bizzotech/erpnext:${ERPNEXT_VERSION}
-    container_name: erpnext-app
+    container_name: ${CONTAINER_NAME_PREFIX}-app
     volumes:
       - './sites:/home/frappe/frappe-bench/sites'
     depends_on:
@@ -22,54 +22,54 @@ services:
 
   scheduler:
     image: bizzotech/erpnext:${ERPNEXT_VERSION}
-    container_name: erpnext-scheduler
+    container_name: ${CONTAINER_NAME_PREFIX}-scheduler
     volumes:
       - './sites:/home/frappe/frappe-bench/sites'
     command: scheduler
 
   worker-default:
     image: bizzotech/erpnext:${ERPNEXT_VERSION}
-    container_name: erpnext-worker-default
+    container_name: ${CONTAINER_NAME_PREFIX}-worker-default
     volumes:
       - './sites:/home/frappe/frappe-bench/sites'
     command: worker-default
 
   worker-long:
     image: bizzotech/erpnext:${ERPNEXT_VERSION}
-    container_name: erpnext-worker-long
+    container_name: ${CONTAINER_NAME_PREFIX}-worker-long
     volumes:
       - './sites:/home/frappe/frappe-bench/sites'
     command: worker-long
 
   worker-short:
     image: bizzotech/erpnext:${ERPNEXT_VERSION}
-    container_name: erpnext-worker-short
+    container_name: ${CONTAINER_NAME_PREFIX}-worker-short
     volumes:
       - './sites:/home/frappe/frappe-bench/sites'
     command: worker-short
 
   redis-cache:
     image: redis
-    container_name: erpnext-redis-cache
+    container_name: ${CONTAINER_NAME_PREFIX}-redis-cache
 
   redis-queue:
     image: redis
-    container_name: erpnext-redis-queue
+    container_name: ${CONTAINER_NAME_PREFIX}-redis-queue
 
   redis-socketio:
     image: redis
-    container_name: erpnext-redis-socketio
+    container_name: ${CONTAINER_NAME_PREFIX}-redis-socketio
 
   node-socketio:
     image: bizzotech/erpnext:${ERPNEXT_VERSION}
-    container_name: erpnext-node-socketio
+    container_name: ${CONTAINER_NAME_PREFIX}-node-socketio
     volumes:
       - './sites:/home/frappe/frappe-bench/sites'
     command: node-socketio
 
   db:
     image: mariadb:latest
-    container_name: erpnext-db
+    container_name: ${CONTAINER_NAME_PREFIX}-db
     volumes:
       - './config/my.cnf:/etc/mysql/conf.d/frappe.cnf'
       - './dataVolume:/var/lib/mysql'
