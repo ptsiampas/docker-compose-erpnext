@@ -11,6 +11,7 @@ services:
       - app
     ports:
       - '${PORT}:80'
+    restart: always
 
   app:
     image: bizzotech/erpnext:${ERPNEXT_VERSION}
@@ -19,6 +20,7 @@ services:
       - './sites:/home/frappe/frappe-bench/sites'
     depends_on:
       - db
+    restart: always
 
   scheduler:
     image: bizzotech/erpnext:${ERPNEXT_VERSION}
@@ -26,6 +28,7 @@ services:
     volumes:
       - './sites:/home/frappe/frappe-bench/sites'
     command: scheduler
+    restart: always
 
   worker-default:
     image: bizzotech/erpnext:${ERPNEXT_VERSION}
@@ -33,6 +36,7 @@ services:
     volumes:
       - './sites:/home/frappe/frappe-bench/sites'
     command: worker-default
+    restart: always
 
   worker-long:
     image: bizzotech/erpnext:${ERPNEXT_VERSION}
@@ -40,6 +44,7 @@ services:
     volumes:
       - './sites:/home/frappe/frappe-bench/sites'
     command: worker-long
+    restart: always
 
   worker-short:
     image: bizzotech/erpnext:${ERPNEXT_VERSION}
@@ -47,18 +52,22 @@ services:
     volumes:
       - './sites:/home/frappe/frappe-bench/sites'
     command: worker-short
+    restart: always
 
   redis-cache:
     image: redis
     container_name: ${CONTAINER_NAME_PREFIX}-redis-cache
+    restart: always
 
   redis-queue:
     image: redis
     container_name: ${CONTAINER_NAME_PREFIX}-redis-queue
+    restart: always
 
   redis-socketio:
     image: redis
     container_name: ${CONTAINER_NAME_PREFIX}-redis-socketio
+    restart: always
 
   node-socketio:
     image: bizzotech/erpnext:${ERPNEXT_VERSION}
@@ -66,10 +75,12 @@ services:
     volumes:
       - './sites:/home/frappe/frappe-bench/sites'
     command: node-socketio
+    restart: always
 
   db:
     image: mariadb:latest
     container_name: ${CONTAINER_NAME_PREFIX}-db
+    restart: always
     volumes:
       - './config/my.cnf:/etc/mysql/conf.d/frappe.cnf'
       - './dataVolume:/var/lib/mysql'
