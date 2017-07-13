@@ -4,6 +4,15 @@ Frappe, ERPNext - Dockerized on Alpine
 
 Follow the steps below to run your own local installation of ERPNext.
 
+## Perequisites
+
+1. **install docker** as per these instructions https://docs.docker.com/engine/installation/
+2. **install docker compose** with `sudo apt install docker-compose` (debian/ubuntu)
+
+## Clone this repository and move into it
+
+1. `git clone https://github.com/emadshaaban92/docker-compose-erpnext.git`  
+2. `cd docker-compose-erpnext`
 
 ## Start a local version of ERPNext
 
