@@ -17,7 +17,7 @@ Follow the steps below to run your own local installation of ERPNext.
 ## Start a local version of ERPNext
 
 1. First we need to bootstrap the installation, run: `docker-compose -f manage.yml run setup`
-2. Enter `y` and enter, when asked to reset the database
+2. Enter `y` and enter, when asked to reset the database. _(be patient here. This may take quite a while)_
 3. Start the containers: `docker-compose up -d`
 4. Watch the container logs: `docker-compose logs -f`
 
