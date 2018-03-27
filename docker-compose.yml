@@ -14,7 +14,7 @@ services:
     restart: always
 
   app:
-    image: bizzotech/erpnext:${ERPNEXT_VERSION}
+    image: improwised/erpnext:${ERPNEXT_VERSION}
     container_name: ${CONTAINER_NAME_PREFIX}-app
     volumes:
       - './sites:/home/frappe/frappe-bench/sites'
@@ -23,7 +23,7 @@ services:
     restart: always
 
   scheduler:
-    image: bizzotech/erpnext:${ERPNEXT_VERSION}
+    image: improwised/erpnext:${ERPNEXT_VERSION}
     container_name: ${CONTAINER_NAME_PREFIX}-scheduler
     volumes:
       - './sites:/home/frappe/frappe-bench/sites'
@@ -31,7 +31,7 @@ services:
     restart: always
 
   worker-default:
-    image: bizzotech/erpnext:${ERPNEXT_VERSION}
+    image: improwised/erpnext:${ERPNEXT_VERSION}
     container_name: ${CONTAINER_NAME_PREFIX}-worker-default
     volumes:
       - './sites:/home/frappe/frappe-bench/sites'
@@ -39,7 +39,7 @@ services:
     restart: always
 
   worker-long:
-    image: bizzotech/erpnext:${ERPNEXT_VERSION}
+    image: improwised/erpnext:${ERPNEXT_VERSION}
     container_name: ${CONTAINER_NAME_PREFIX}-worker-long
     volumes:
       - './sites:/home/frappe/frappe-bench/sites'
@@ -47,7 +47,7 @@ services:
     restart: always
 
   worker-short:
-    image: bizzotech/erpnext:${ERPNEXT_VERSION}
+    image: improwised/erpnext:${ERPNEXT_VERSION}
     container_name: ${CONTAINER_NAME_PREFIX}-worker-short
     volumes:
       - './sites:/home/frappe/frappe-bench/sites'
@@ -70,7 +70,7 @@ services:
     restart: always
 
   node-socketio:
-    image: bizzotech/erpnext:${ERPNEXT_VERSION}
+    image: improwised/erpnext:${ERPNEXT_VERSION}
     container_name: ${CONTAINER_NAME_PREFIX}-node-socketio
     volumes:
       - './sites:/home/frappe/frappe-bench/sites'
